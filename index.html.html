@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>СТРОЙШТУКИ ОПТ — Строительные материалы от производителя</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',Arial,sans-serif}
+:root{
+  --green:#1a5c3a;
+  --green-dark:#0f3d26;
+  --green-light:#e8f5ee;
+  --orange:#f5a623;
+  --orange-dark:#d4891a;
+  --gray-bg:#f4f5f6;
+  --gray-text:#666;
+  --border:#e0e0e0;
+  --white:#fff;
+  --text:#1a1a1a;
+}
+body{background:var(--gray-bg);color:var(--text);font-size:13px}
+
+/* TOP BAR */
+.top-bar{background:var(--green-dark);color:#cde8d8;padding:6px 40px;display:flex;justify-content:space-between;align-items:center;font-size:11px}
+.top-bar a{color:#cde8d8;text-decoration:none;margin-left:14px}
+.top-bar a:hover{color:#fff}
+.top-bar__left{display:flex;align-items:center;gap:16px}
+.top-bar__right{display:flex;align-items:center}
+
+/* HEADER */
+.header{background:var(--white);padding:14px 40px;display:flex;align-items:center;gap:16px;border-bottom:1px solid var(--border)}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;min-width:200px}
+.logo__icon{background:var(--orange);width:36px;height:36px;border-radius:7px;display:flex;align-items:center;justify-content:center}
+.logo__icon svg{width:20px;height:20px;fill:white}
+.logo__text{font-size:19px;font-weight:700;color:var(--green)}
+.logo__text span{color:var(--orange)}
+.logo__sub{font-size:9px;color:var(--gray-text);text-transform:uppercase;letter-spacing:1px}
+
+.catalog-btn{background:var(--green);color:#fff;border:none;border-radius:7px;padding:11px 20px;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.catalog-btn:hover{background:var(--green-dark)}
+.catalog-btn svg{width:16px;height:16px;fill:white}
+
+.search-wrap{flex:1;display:flex;align-items:center;border:2px solid var(--green);border-radius:8px;overflow:hidden;height:44px}
+.search-wrap input{flex:1;border:none;padding:0 16px;font-size:13px;outline:none;height:100%;color:var(--text)}
+.search-select{border:none;border-left:1px solid var(--border);padding:0 12px;font-size:12px;color:var(--gray-text);background:var(--gray-bg);height:100%;outline:none;cursor:pointer}
+.search-btn{background:var(--green);border:none;width:48px;height:100%;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.search-btn:hover{background:var(--green-dark)}
+.search-btn svg{width:18px;height:18px;stroke:white;fill:none;stroke-width:2}
+
+.header-icons{display:flex;align-items:center;gap:20px}
+.icon-btn{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;position:relative;color:var(--gray-text);text-decoration:none;font-size:10px}
+.icon-btn svg{width:24px;height:24px;stroke:var(--green);fill:none;stroke-width:1.8}
+.icon-btn:hover svg{stroke:var(--orange)}
+.icon-btn:hover{color:var(--orange)}
+.badge{position:absolute;top:-4px;right:-8px;background:var(--orange);color:#fff;font-size:9px;font-weight:700;width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+
+/* PROMO BAR */
+.promo-bar{background:var(--orange);color:#fff;text-align:center;padding:10px 40px;font-size:13px;font-weight:600}
+.promo-bar strong{font-size:15px}
+
+/* NAV */
+.nav-bar{background:var(--white);border-bottom:1px solid var(--border);padding:0 40px}
+.nav-bar ul{display:flex;list-style:none}
+.nav-bar li a{display:block;padding:12px 15px;font-size:12px;color:var(--text);text-decoration:none;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
+.nav-bar li a:hover{color:var(--green);border-bottom-color:var(--green)}
+
+/* HERO */
+.hero{background:linear-gradient(120deg,var(--green-dark) 55%,var(--green) 100%);padding:48px 40px;display:flex;align-items:center;justify-content:space-between;gap:40px}
+.hero__content{max-width:520px}
+.hero__badge{background:var(--orange);color:#fff;font-size:10px;font-weight:700;padding:4px 14px;border-radius:20px;display:inline-block;margin-bottom:14px;letter-spacing:.5px;text-transform:uppercase}
+.hero h1{color:#fff;font-size:28px;font-weight:700;line-height:1.3;margin-bottom:12px}
+.hero h1 em{color:var(--orange);font-style:normal}
+.hero p{color:#b8d9c6;font-size:13px;line-height:1.7;margin-bottom:22px}
+.hero__btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-primary{background:var(--orange);color:#fff;border:none;border-radius:7px;padding:13px 26px;font-size:13px;font-weight:700;cursor:pointer;transition:background .15s}
+.btn-primary:hover{background:var(--orange-dark)}
+.btn-outline{background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.5);border-radius:7px;padding:13px 26px;font-size:13px;font-weight:600;cursor:pointer;transition:border-color .15s}
+.btn-outline:hover{border-color:#fff}
+.hero__stats{display:flex;gap:28px;margin-top:28px}
+.stat{text-align:center}
+.stat__num{color:var(--orange);font-size:26px;font-weight:700;line-height:1}
+.stat__label{color:#8cb8a0;font-size:10px;margin-top:4px}
+.hero__img{width:240px;min-width:200px;background:rgba(255,255,255,0.08);border-radius:14px;display:flex;align-items:center;justify-content:center;padding:28px;flex-direction:column;gap:14px}
+.hero__img-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%}
+.hero__img-cell{background:rgba(255,255,255,0.12);border-radius:10px;height:68px;display:flex;align-items:center;justify-content:center}
+.hero__img-cell svg{width:30px;height:30px;stroke:#b8d9c6;fill:none;stroke-width:1.5}
+
+/* ADVANTAGES */
+.advantages{background:var(--white);padding:24px 40px;border-bottom:1px solid var(--border)}
+.adv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.adv{display:flex;align-items:flex-start;gap:14px}
+.adv__icon{background:var(--green-light);border-radius:10px;width:48px;height:48px;min-width:48px;display:flex;align-items:center;justify-content:center}
+.adv__icon svg{width:24px;height:24px;stroke:var(--green);fill:none;stroke-width:1.8}
+.adv h4{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px}
+.adv p{font-size:11px;color:var(--gray-text);line-height:1.6}
+
+/* SECTION */
+.section{padding:28px 40px}
+.section__head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.section__title{font-size:17px;font-weight:700;color:var(--text)}
+.section__link{font-size:12px;color:var(--green);text-decoration:none}
+.section__link:hover{color:var(--orange)}
+
+/* CATALOG GRID */
+.cat-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.cat-card{background:var(--white);border-radius:10px;border:1px solid var(--border);padding:16px 10px;text-align:center;cursor:pointer;transition:box-shadow .15s,border-color .15s;text-decoration:none;color:inherit;display:block}
+.cat-card:hover{border-color:var(--green);box-shadow:0 3px 16px rgba(26,92,58,.12)}
+.cat-card__icon{width:54px;height:54px;border-radius:12px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center}
+.cat-card__icon svg{width:30px;height:30px;fill:none;stroke-width:1.6}
+.cat-card__name{font-size:11px;font-weight:600;color:var(--text);margin-bottom:3px}
+.cat-card__count{font-size:10px;color:var(--gray-text)}
+
+/* PRODUCT GRID */
+.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.prod-card{background:var(--white);border-radius:10px;border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:box-shadow .15s}
+.prod-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.1)}
+.prod-card__img{background:var(--gray-bg);height:150px;display:flex;align-items:center;justify-content:center;position:relative}
+.prod-card__img svg{width:64px;height:64px;stroke:#aaa;fill:none;stroke-width:1.2}
+.prod-card__badges{position:absolute;top:10px;left:10px;display:flex;gap:4px;flex-direction:column;align-items:flex-start}
+.badge-hit{background:#e8f5ee;color:var(--green);font-size:9px;font-weight:700;padding:3px 8px;border-radius:4px}
+.badge-new{background:#fff3e0;color:#e65100;font-size:9px;font-weight:700;padding:3px 8px;border-radius:4px}
+.badge-sale{background:#fce4ec;color:#c62828;font-size:9px;font-weight:700;padding:3px 8px;border-radius:4px}
+.prod-card__body{padding:12px 14px}
+.prod-card__name{font-size:12px;font-weight:600;color:var(--text);margin-bottom:5px;line-height:1.4}
+.prod-card__stock{font-size:10px;color:#2e7d32;margin-bottom:7px}
+.prod-card__price{font-size:16px;font-weight:700;color:var(--green);margin-bottom:10px}
+.prod-card__price span{font-size:11px;font-weight:400;color:var(--gray-text);text-decoration:line-through;margin-left:7px}
+.prod-card__add{width:100%;background:var(--green);color:#fff;border:none;border-radius:7px;padding:8px;font-size:11px;font-weight:600;cursor:pointer;transition:background .15s}
+.prod-card__add:hover{background:var(--green-dark)}
+
+/* TAGS */
+.tags-section{background:var(--white);padding:22px 40px;border-top:1px solid var(--border)}
+.tags-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:14px}
+.tags-wrap{display:flex;flex-wrap:wrap;gap:9px}
+.tag{background:var(--green-light);color:var(--green);border-radius:20px;padding:7px 16px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid rgba(26,92,58,.2);text-decoration:none;transition:background .15s,color .15s}
+.tag:hover{background:var(--green);color:#fff}
+
+/* FOOTER */
+.footer{background:var(--green-dark);color:#8cb8a0;padding:36px 40px 18px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:28px;margin-bottom:24px}
+.footer-logo{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.footer-logo__icon{background:var(--orange);width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center}
+.footer-logo__icon svg{width:16px;height:16px;fill:white}
+.footer-logo__text{color:#fff;font-size:17px;font-weight:700}
+.footer-logo__text span{color:var(--orange)}
+.footer-desc{font-size:11px;line-height:1.8;color:#8cb8a0;margin-bottom:16px}
+.footer-messengers{display:flex;gap:9px}
+.messenger-btn{background:rgba(255,255,255,0.1);width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;transition:background .15s}
+.messenger-btn:hover{background:rgba(255,255,255,0.22)}
+.messenger-btn svg{width:17px;height:17px;fill:#fff}
+.footer-col h5{color:#fff;font-size:12px;font-weight:600;margin-bottom:12px}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:8px}
+.footer-col ul li a{color:#8cb8a0;text-decoration:none;font-size:11px;transition:color .15s}
+.footer-col ul li a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:16px;display:flex;justify-content:space-between;align-items:center;font-size:10px}
+.footer-bottom a{color:#8cb8a0;text-decoration:none}
+.footer-bottom a:hover{color:#fff}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .cat-grid{grid-template-columns:repeat(3,1fr)}
+  .prod-grid{grid-template-columns:repeat(2,1fr)}
+  .adv-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .top-bar__right{display:none}
+  .header{flex-wrap:wrap;padding:12px 16px}
+  .hero{flex-direction:column;padding:28px 16px}
+  .hero__img{display:none}
+  .hero__stats{gap:16px}
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
+  .prod-grid{grid-template-columns:repeat(2,1fr)}
+  .adv-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .section,.advantages,.tags-section,.footer{padding-left:16px;padding-right:16px}
+  .nav-bar{overflow-x:auto;padding:0 16px}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="top-bar__left">
+    <span>📍 Москва</span>
+    <span>Пн–Пт 9:00–18:00, Сб 10:00–15:00</span>
+    <span>⭐ 4.9 — Яндекс</span>
+  </div>
+  <div class="top-bar__right">
+    <a href="#">О бренде</a>
+    <a href="#">Доставка и оплата</a>
+    <a href="#">Акции</a>
+    <a href="#">Партнёрам</a>
+    <a href="#">Новости</a>
+    <a href="#">Контакты</a>
+    <a href="#" style="font-weight:600;color:#fff;margin-left:20px">8 (800) 700-XX-XX</a>
+    <a href="#" style="border:1px solid rgba(255,255,255,.3);border-radius:5px;padding:3px 10px;margin-left:10px;font-size:10px">Заказать звонок</a>
+  </div>
+</div>
+
+<!-- HEADER -->
+<div class="header">
+  <a class="logo" href="#">
+    <div class="logo__icon">
+      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    </div>
+    <div>
+      <div class="logo__text">строй<span>штуки</span></div>
+      <div class="logo__sub">ОПТ • от производителя</div>
+    </div>
+  </a>
+
+  <button class="catalog-btn">
+    <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    Каталог
+  </button>
+
+  <div class="search-wrap">
+    <input type="text" placeholder="Поиск товаров — герметик, пена, диски...">
+    <select class="search-select">
+      <option>Каталог</option>
+      <option>Бренды</option>
+      <option>Акции</option>
+    </select>
+    <button class="search-btn">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
+  </div>
+
+  <div class="header-icons">
+    <a class="icon-btn" href="#">
+      <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      Избранное
+    </a>
+    <a class="icon-btn" href="#" style="position:relative">
+      <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      <span class="badge">3</span>
+      Корзина
+    </a>
+  </div>
+</div>
+
+<!-- PROMO BAR -->
+<div class="promo-bar">
+  🎁 Акция для новых клиентов: <strong>−5 000 ₽ на первый заказ</strong> при заказе от 30 000 ₽ &nbsp;·&nbsp; Промокод: <strong>НОВЫЙ5000</strong>
+</div>
+
+<!-- NAV -->
+<div class="nav-bar">
+  <ul>
+    <li><a href="#">Герметики</a></li>
+    <li><a href="#">Монтажная пена</a></li>
+    <li><a href="#">Круги и диски</a></li>
+    <li><a href="#">Свёрла</a></li>
+    <li><a href="#">Клей и смеси</a></li>
+    <li><a href="#">Крепёж</a></li>
+    <li><a href="#">Инструмент</a></li>
+    <li><a href="#">Кровля</a></li>
+    <li><a href="#" style="color:#e65100;font-weight:600">Акции 🔥</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero__content">
+    <div class="hero__badge">Производитель • Опт с 2017 года</div>
+    <h1>Строительные материалы<br><em>напрямую от производителя</em></h1>
+    <p>Оптовые поставки герметиков, монтажной пены, дисков и расходников без посредников — быстро, надёжно, с гарантией качества.</p>
+    <div class="hero__btns">
+      <button class="btn-primary">Перейти в каталог →</button>
+      <button class="btn-outline">Получить прайс-лист</button>
+    </div>
+    <div class="hero__stats">
+      <div class="stat">
+        <div class="stat__num">7 лет</div>
+        <div class="stat__label">на рынке</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">500+</div>
+        <div class="stat__label">товаров</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">24 ч</div>
+        <div class="stat__label">отгрузка</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">10 мин</div>
+        <div class="stat__label">ответ партнёру</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero__img">
+    <div class="hero__img-grid">
+      <div class="hero__img-cell">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <div class="hero__img-cell">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+      </div>
+      <div class="hero__img-cell">
+        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      </div>
+      <div class="hero__img-cell">
+        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+      </div>
+    </div>
+    <div style="color:#8cb8a0;font-size:10px;text-align:center;margin-top:8px">Сертифицированная продукция</div>
+  </div>
+</div>
+
+<!-- ADVANTAGES -->
+<div class="advantages">
+  <div class="adv-grid">
+    <div class="adv">
+      <div class="adv__icon">
+        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      </div>
+      <div>
+        <h4>Быстрая отгрузка</h4>
+        <p>Отгружаем со склада по России в течение 24 часов</p>
+      </div>
+    </div>
+    <div class="adv">
+      <div class="adv__icon">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div>
+        <h4>Поддержка партнёров</h4>
+        <p>Отвечаем на запросы оптовых клиентов в течение 10 минут</p>
+      </div>
+    </div>
+    <div class="adv">
+      <div class="adv__icon">
+        <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </div>
+      <div>
+        <h4>Доступные оптовые цены</h4>
+        <p>Работайте напрямую с производителем, без лишних наценок</p>
+      </div>
+    </div>
+    <div class="adv">
+      <div class="adv__icon">
+        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <div>
+        <h4>Гарантия качества</h4>
+        <p>Отгружаем сертифицированный товар по стандартам качества</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CATALOG -->
+<div class="section" style="background:var(--gray-bg)">
+  <div class="section__head">
+    <div class="section__title">Каталог строительных товаров от производителя — оптом</div>
+    <a class="section__link" href="#">Все категории →</a>
+  </div>
+  <div class="cat-grid">
+    <a class="cat-card" href="#">
+      <div class="cat-card__icon" style="background:#e3f2fd">
+        <svg viewBox="0 0 24 24" style="stroke:#1565c0"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <div class="cat-card__name">Герметики</div>
+      <div class="cat-card__count">142 товара</div>
+    </a>
+    <a class="cat-card" href="#">
+      <div class="cat-card__icon" style="background:#e8f5e9">
+        <svg viewBox="0 0 24 24" style="stroke:#2e7d32"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+      </div>
+      <div class="cat-card__name">Монтажная пена</div>
+      <div class="cat-card__count">87 товаров</div>
+    </a>
+    <a class="cat-card" href="#">
+      <div class="cat-card__icon" style="background:#fff3e0">
+        <svg viewBox="0 0 24 24" style="stroke:#e65100"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+      </div>
+      <div class="cat-card__name">Круги и диски</div>
+      <div class="cat-card__count">215 товаров</div>
+    </a>
+    <a class="cat-card" href="#">
+      <div class="cat-card__icon" style="background:#f3e5f5">
+        <svg viewBox="0 0 24 24" style="stroke:#6a1b9a"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5"/></svg>
+      </div>
+      <div class="cat-card__name">Свёрла</div>
+      <div class="cat-card__count">98 товаров</div>
+    </a>
+    <a class="cat-card" href="#">
+      <div class="cat-card__icon" style="background:#fce4ec">
+        <svg viewBox="0 0 24 24" style="stroke:#880e4f"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      </div>
+      <div class="cat-card__name">Клей и смеси</div>
+      <div class="cat-card__count">63 товара</div>
+    </a>
+    <a class="cat-card" href="#">
+      <div class="cat-card__icon" style="background:#e8f5e9">
+        <svg viewBox="0 0 24 24" style="stroke:#1b5e20"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      </div>
+      <div class="cat-card__name">Инструмент</div>
+      <div class="cat-card__count">176 товаров</div>
+    </a>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<div class="section" style="background:var(--white)">
+  <div class="section__head">
+    <div class="section__title">Хиты продаж</div>
+    <a class="section__link" href="#">Все товары →</a>
+  </div>
+  <div class="prod-grid">
+
+    <div class="prod-card">
+      <div class="prod-card__img">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        <div class="prod-card__badges"><span class="badge-hit">ХИТ</span></div>
+      </div>
+      <div class="prod-card__body">
+        <div class="prod-card__name">Герметик силиконовый нейтральный 300мл</div>
+        <div class="prod-card__stock">✓ В наличии: 2 340 шт</div>
+        <div class="prod-card__price">89 ₽/шт <span>110 ₽</span></div>
+        <button class="prod-card__add">+ В корзину</button>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-card__img">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        <div class="prod-card__badges"><span class="badge-new">НОВИНКА</span></div>
+      </div>
+      <div class="prod-card__body">
+        <div class="prod-card__name">Монтажная пена профессиональная 750мл</div>
+        <div class="prod-card__stock">✓ В наличии: 1 180 шт</div>
+        <div class="prod-card__price">145 ₽/шт</div>
+        <button class="prod-card__add">+ В корзину</button>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-card__img">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+        <div class="prod-card__badges"><span class="badge-sale">АКЦИЯ</span></div>
+      </div>
+      <div class="prod-card__body">
+        <div class="prod-card__name">Круг отрезной по металлу 125×1.6×22мм</div>
+        <div class="prod-card__stock">✓ В наличии: 5 600 шт</div>
+        <div class="prod-card__price">28 ₽/шт <span>35 ₽</span></div>
+        <button class="prod-card__add">+ В корзину</button>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-card__img">
+        <svg viewBox="0 0 24 24"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        <div class="prod-card__badges"><span class="badge-hit">ХИТ</span></div>
+      </div>
+      <div class="prod-card__body">
+        <div class="prod-card__name">Сверло по металлу HSS 8мм (уп. 10 шт)</div>
+        <div class="prod-card__stock">✓ В наличии: 890 уп</div>
+        <div class="prod-card__price">320 ₽/уп</div>
+        <button class="prod-card__add">+ В корзину</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- TAGS -->
+<div class="tags-section">
+  <div class="tags-title">Мы работаем с отраслями</div>
+  <div class="tags-wrap">
+    <a class="tag" href="#">🏗 Строительные компании</a>
+    <a class="tag" href="#">🏭 Промышленные предприятия</a>
+    <a class="tag" href="#">🏠 Управляющие компании</a>
+    <a class="tag" href="#">🔧 Сервисные центры</a>
+    <a class="tag" href="#">🛒 Оптовые покупатели</a>
+    <a class="tag" href="#">🚗 Автосервисы</a>
+    <a class="tag" href="#">🏗 Монтажные организации</a>
+    <a class="tag" href="#">📦 Дистрибьюторы</a>
+    <a class="tag" href="#">🏢 Девелоперы</a>
+    <a class="tag" href="#">🔩 Производственные компании</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">
+        <div class="footer-logo__icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="footer-logo__text">строй<span>штуки</span> <small style="font-size:10px;font-weight:400;color:#8cb8a0">ОПТ</small></div>
+      </div>
+      <div class="footer-desc">Производитель и оптовый поставщик строительных материалов. Работаем с 2017 года. Более 500 товаров. Отгрузка по всей России за 24 часа.</div>
+      <div class="footer-messengers">
+        <button class="messenger-btn" title="Telegram">
+          <svg viewBox="0 0 24 24"><path d="M21.198 2.433a2.242 2.242 0 0 0-1.022.215l-16.5 6.75a2.25 2.25 0 0 0 .068 4.177l3.256 1.145 7.857-5.636-5.906 6.508 5.46 1.92a2.25 2.25 0 0 0 2.923-1.41l3.15-12a2.25 2.25 0 0 0-3.286-2.669z"/></svg>
+        </button>
+        <button class="messenger-btn" title="WhatsApp">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a8.2 8.2 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33C8.46 21.53 10.2 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg>
+        </button>
+        <button class="messenger-btn" title="ВКонтакте">
+          <svg viewBox="0 0 24 24"><path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.408 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.862-.523-2.049-1.727-1.033-1-1.49-.9-1.74-.9-.356 0-.458.1-.458.6v1.573c0 .424-.135.68-1.253.68-1.845 0-3.896-1.12-5.337-3.202C4.71 11.544 4.2 9.756 4.2 9.36c0-.246.098-.474.6-.474h1.744c.449 0 .619.2.792.673.87 2.52 2.33 4.73 2.929 4.73.225 0 .327-.105.327-.68V11.18c-.068-1.22-.712-1.32-.712-1.753 0-.208.17-.42.44-.42h2.744c.374 0 .506.2.506.63v3.393c0 .374.168.506.273.506.225 0 .413-.132.826-.545 1.28-1.432 2.194-3.633 2.194-3.633.12-.246.327-.474.773-.474h1.744c.523 0 .636.268.523.63-.215.998-2.303 3.944-2.303 3.944-.18.295-.247.424 0 .752.18.247.77.76 1.163 1.22.72.84 1.27 1.547 1.418 2.034.148.478-.098.722-.59.722z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h5>Компания</h5>
+      <ul>
+        <li><a href="#">О бренде</a></li>
+        <li><a href="#">Новости</a></li>
+        <li><a href="#">Партнёрам</a></li>
+        <li><a href="#">Вакансии</a></li>
+        <li><a href="#">Контакты</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h5>Покупателям</h5>
+      <ul>
+        <li><a href="#">Доставка и оплата</a></li>
+        <li><a href="#">Возврат товара</a></li>
+        <li><a href="#">Гарантия</a></li>
+        <li><a href="#">Акции</a></li>
+        <li><a href="#">Личный кабинет</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h5>Контакты</h5>
+      <ul>
+        <li><a href="tel:88007000000">8 (800) 700-XX-XX</a></li>
+        <li><a href="mailto:info@stroishtuki.ru">info@stroishtuki.ru</a></li>
+        <li><a href="#" style="color:#8cb8a0;cursor:default">Пн–Пт: 9:00–18:00</a></li>
+        <li><a href="#" style="color:#8cb8a0;cursor:default">Сб: 10:00–15:00</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2017–2026 СТРОЙШТУКИ ОПТ. Все права защищены.</span>
+    <span>
+      <a href="#">Политика конфиденциальности</a> &nbsp;·&nbsp;
+      <a href="#">Публичная оферта</a>
+    </span>
+  </div>
+</div>
+
+</body>
+</html>
